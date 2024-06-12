@@ -4,8 +4,7 @@ import { useState } from 'react';
 
 
 
-const ProjectInfo = () => {
-  const [description, setDescription] = useState('');
+const ProjectInfo = ( {description, setDescription} ) => {
 
   return (
     <div className="mb-4">

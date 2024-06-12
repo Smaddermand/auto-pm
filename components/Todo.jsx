@@ -2,8 +2,7 @@
 import React from 'react'
 import { useState } from 'react';
 
-const Todo = () => {
-  const [todos, setTodos] = useState([]);
+const Todo = ( {todos, setTodos} ) => {
   const [todo, setTodo] = useState('');
 
   const addTodo = () => {

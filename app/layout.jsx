@@ -20,6 +20,9 @@ import React from 'react'
 
 import "@/assets/styles/globals.css"
 
+import Header from "@/components/Header"
+import Footer from "@/components/Footer"
+
 export const metadata = {
   tile: "autoPM | Automate your Project Management",
   description: "Automate all Project Management Tasks and todos",
@@ -30,7 +33,11 @@ const MainLayout = ( {children}) => {
   return (
     <html lang="en">
       <body>
-        <div> {children}</div>
+      <div className="flex flex-col min-h-screen">
+      <Header />
+      <main className="flex-grow">{children}</main>
+      <Footer />
+    </div>
       </body>
     </html>
   )

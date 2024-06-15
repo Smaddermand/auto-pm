@@ -22,6 +22,7 @@ const Home = () => {
         <ProjectInfo description={description} setDescription={setDescription} />
         <Todo todos={todos} setTodos={setTodos} />
         <NextStep description={description} todos={todos} />
+
       </div>
 
   )

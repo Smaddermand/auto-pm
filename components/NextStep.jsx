@@ -1,3 +1,4 @@
+// Nextstep.jsx
 import { useState } from 'react';
 
 const NextStep = ({ description, todos }) => {
@@ -6,17 +7,27 @@ const NextStep = ({ description, todos }) => {
 
   const fetchNextStep = async () => {
     setLoading(true);
-    const response = await fetch('/api/generate-next-step', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ description, todos }),
-    });
+    try {
+      const response = await fetch('app/api/generate-next-step', { // Updated path
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ description, todos }),
+      });
 
-    const data = await response.json();
-    setNextStep(data.nextStep);
-    setLoading(false);
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      const data = await response.json();
+      setNextStep(data.nextStep);
+    } catch (error) {
+      console.error('Error fetching next step:', error);
+      setNextStep('Error generating the next step.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
